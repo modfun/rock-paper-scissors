@@ -88,13 +88,14 @@ function game() {
         --rounds;
     }
 
+    let massage = ''
     if (wins === loses) {
-        console.log("You have Drawn with " + wins + " wins, " + loses + " loses and " + draws + " draws");
+        console.log(message = ("You have Drawn with " + wins + " wins, " + loses + " loses and " + draws + " draws"));
     } else if (wins > loses) {
-        console.log("You are The Winner!")
-        console.log(" You win " + wins + " rounds, lost " + loses + " rounds and drawn " + draws + " rounds.");
+        console.log(message = ("You are The Winner!" + " You win " + wins + " rounds, lost " + loses + " rounds and drawn " + draws + " rounds."));
     }
     else {
-        console.log("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws.");
+        console.log(message = ("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws."));
     }
+    alert(message);
 }
