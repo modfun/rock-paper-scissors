@@ -26,16 +26,25 @@ function playUI() {
         } else {
             ++draws;
         }
-        console.log(result.substring(1));
+        printScore(result.substring(1), 'brown');
+
         //output using dom mani
         if (wins >= 5 || loses >= 5) {
-            printResult( calcResult( wins, loses, draws));
+            printResult( calcResult( wins, loses, draws), 'blue');
             wins = loses = draws = 0;
         }
     });
 }
 
-function printResult(message) {
+function printScore( message, messageColor) {
+    const outputBox = document.querySelector('.score');
+    const scorePara = document.querySelector('.score p');
+
+    scorePara.textContent = message;
+    scorePara.style.color = messageColor;
+}
+
+function printResult(message, messageColor) {
     const outputBox = document.querySelector('.output');
     const resultPara = document.createElement('p');
 
@@ -43,6 +52,7 @@ function printResult(message) {
     outputBox.style['border'] = '2px solid black';
     outputBox.appendChild(resultPara);
     resultPara.textContent = message;
+    resultPara.style.color = messageColor;
 }
 
 function computerPlay() {
