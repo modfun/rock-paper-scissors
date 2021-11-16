@@ -1,0 +1,12 @@
+p {
+    color: brown;
+}
+
+.input {
+    margin-bottom: 50px;
+}
+
+.output {
+    height: auto;
+    min-height: 200px;
+}
