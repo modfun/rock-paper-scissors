@@ -1,0 +1,24 @@
+h1 {
+    text-align: center;
+}
+
+p {
+    color: brown;
+}
+
+.input {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.score {
+    color: 'blue';
+    text-align: center;
+    background-color: yellowgreen;
+}
+
+.output {
+    height: auto;
+    min-height: 200px;
+    text-align: center;
+}
