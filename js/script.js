@@ -62,7 +62,8 @@ function getRandomInteger(min, max) {
 function game() {
     //use playSingle function to play a multi-round game that keeps score
     //and report a winner or a loser at the end.
-    let rounds = prompt("How Many Rounds to play");
+    // let rounds = prompt("How Many Rounds to play");
+    let rounds = 0;
     let userSelection = '';
     let opponentSelection = '';
     let result = '';
@@ -97,5 +98,5 @@ function game() {
     else {
         console.log(message = ("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws."));
     }
-    alert(message);
+    // alert(message);
 }
