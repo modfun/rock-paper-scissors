@@ -15,10 +15,30 @@ p {
     color: 'blue';
     text-align: center;
     background-color: yellowgreen;
+    border: 2px solid black;
+    margin-bottom: 10px;
 }
 
 .output {
     height: auto;
     min-height: 200px;
     text-align: center;
+}
+
+button {
+    padding: 8px 24px;
+    color: wheat;
+    background-color: royalblue;
+    border: none;
+    border-radius: 8px;
+}
+
+button:hover {
+    border: 2px solid green;
+}
+
+.button:active {
+    background-color: rosybrown;
+    box-shadow: 0 5px royalblue;
+    transform: translateY(4px);
 }
