@@ -4,8 +4,45 @@ function main() {
     const userSelection = 'rock';
     const opponentSelection = computerPlay();
 
-    // playSingle(userSelection, opponentSelection);
-    game();
+    // game();
+    playUI();
+}
+
+function playUI() {
+    let loses = 0;
+    let wins = 0;
+    let draws = 0;
+    window.addEventListener( 'click', (e) => {
+        // console.log(e.target.getAttribute('class'));
+        let className = e.target.getAttribute('class');
+        if (!(className === 'rock' || className === 'scissors' || className === 'paper')) return;
+        let result = playSingle( e.target.getAttribute('class'), computerPlay());
+        // console.log(result);
+
+        if (result.charAt(0) === '0' ) {
+            ++loses;
+        } else if (result.charAt(0) === '1') {
+            ++wins;
+        } else {
+            ++draws;
+        }
+        console.log(result.substring(1));
+        //output using dom mani
+        if (wins >= 5 || loses >= 5) {
+            printResult( calcResult( wins, loses, draws));
+            wins = loses = draws = 0;
+        }
+    });
+}
+
+function printResult(message) {
+    const outputBox = document.querySelector('.output');
+    const resultPara = document.createElement('p');
+
+    outputBox.style['background-color'] = 'grey';
+    outputBox.style['border'] = '2px solid black';
+    outputBox.appendChild(resultPara);
+    resultPara.textContent = message;
 }
 
 function computerPlay() {
@@ -21,6 +58,7 @@ function computerPlay() {
 function playSingle(playerSelection, computerSelection) {
     //plays a single round of rock, paper, scissors
     //takes two parameters and the function is case-sensitive
+    // console.log('invocked');
     playerSelection = playerSelection.toLowerCase();
     let loseMassage = "0You Lose! ";
     let winMassage = "1You Win! ";
@@ -59,6 +97,21 @@ function getRandomInteger(min, max) {
     return x;
 }
 
+function calcResult( wins, loses, draws) {
+    let message = ''
+    if (wins === loses) {
+        message = ("You have Drawn with " + wins + " wins, " + loses + " loses and " + draws + " draws");
+    } else if (wins > loses) {
+        message = ("You are The Winner!" + " You win " + wins + " rounds, lost " + loses + " rounds and drawn " + draws + " rounds.");
+    }
+    else {
+        message = ("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws.");
+    }
+    console.log( message);
+
+    return message;
+}
+
 function game() {
     //use playSingle function to play a multi-round game that keeps score
     //and report a winner or a loser at the end.
@@ -72,7 +125,7 @@ function game() {
     let draws = 0;
 
     while (rounds > 0) {
-        userSelection = prompt("Choose a play 'rock', 'paper' or 'scissors'.");
+        // userSelection = prompt("Choose a play 'rock', 'paper' or 'scissors'.");
         userSelection = userSelection.toLowerCase();
         opponentSelection = computerPlay();
 
@@ -89,14 +142,14 @@ function game() {
         --rounds;
     }
 
-    let massage = ''
-    if (wins === loses) {
-        console.log(message = ("You have Drawn with " + wins + " wins, " + loses + " loses and " + draws + " draws"));
-    } else if (wins > loses) {
-        console.log(message = ("You are The Winner!" + " You win " + wins + " rounds, lost " + loses + " rounds and drawn " + draws + " rounds."));
-    }
-    else {
-        console.log(message = ("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws."));
-    }
-    // alert(message);
+    // let massage = ''
+    // if (wins === loses) {
+        // console.log(message = ("You have Drawn with " + wins + " wins, " + loses + " loses and " + draws + " draws"));
+    // } else if (wins > loses) {
+        // console.log(message = ("You are The Winner!" + " You win " + wins + " rounds, lost " + loses + " rounds and drawn " + draws + " rounds."));
+    // }
+    // else {
+        // console.log(message = ("You Lose!! stat: " + wins + " wins, " + loses + " loses and " + draws + " draws."));
+    // }
+    alert(printResult( wins, loses, draws));
 }
